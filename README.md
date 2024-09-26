@@ -29,16 +29,12 @@ Hieronder volgt een overzicht van de belangrijkste onderdelen van dit project:
 - **MainScene**: Dit is de enige scène van de game waarin de volledige gameplay plaatsvindt. Hierin bevinden zich de bal, de twee paddles (de speler en de AI) en de scoreweergave.
 
 ### 2. Scripts
-- **BallController.cs**: Regelt de beweging en botsingen van de bal in het spel.
-- **PlayerController.cs**: Regelt de invoer van de speler voor het besturen van de paddle.
-- **AIController.cs**: Regelt het gedrag van de AI-paddle en implementeert een eenvoudig algoritme om de bal te volgen.
+- **BallControll.cs**: Regelt de beweging en botsingen van de bal in het spel.
+- **PlayerControls.cs**: Regelt de invoer van de speler voor het besturen van de paddle.
 - **GameManager.cs**: Beheert de algemene logica van het spel, zoals het bijhouden van de score en het resetten van de bal na een punt.
+- **SideWalls.cs**: Neemt waar of de bal voorbij de paddle gaat.
 
-### 3. Prefabs
-- **Paddle**: Een prefab voor de paddles, die zowel door de speler als door de AI gebruikt wordt.
-- **Ball**: De prefab voor de bal die door beide paddles heen en weer geslagen wordt.
-
-### 4. Physics
+### 3. Physics
 - De game maakt gebruik van Unity's 2D Physics-systeem om botsingen tussen de bal en de paddles af te handelen. 
 
 ## AI Logica
@@ -48,29 +44,6 @@ De AI in dit project volgt een eenvoudige strategie:
 - De moeilijkheidsgraad kan aangepast worden door de reactiesnelheid of snelheid van de AI-paddle te verhogen of te verlagen.
 - Voor beginners: de AI kan direct de Y-positie van de bal volgen.
 - Voor gevorderden: je kunt proberen een meer geavanceerde AI te implementeren die rekening houdt met de snelheid van de bal en zijn toekomstige positie voorspelt.
-
-**Voorbeeld van een eenvoudige AI-beweging:**
-
-```csharp
-public class AIController : MonoBehaviour
-{
-    public Transform ball; // Referentie naar de bal
-    public float speed = 5f; // Snelheid van de paddle
-
-    void Update()
-    {
-        // Paddle beweegt richting de Y-positie van de bal
-        if (ball.position.y > transform.position.y)
-        {
-            transform.Translate(Vector2.up * speed * Time.deltaTime);
-        }
-        else if (ball.position.y < transform.position.y)
-        {
-            transform.Translate(Vector2.down * speed * Time.deltaTime);
-        }
-    }
-}
-```
 
 ## Aan de slag
 
@@ -82,7 +55,7 @@ public class AIController : MonoBehaviour
    - Start Unity en open het project.
 
 3. **Scène configureren**:
-   - Open `MainScene` in de Unity-editor.
+   - Open `SampleScene` in de Unity-editor.
    - Zorg ervoor dat de bal, paddles en scripts correct aan de objecten zijn gekoppeld.
 
 4. **Spelen**:
@@ -94,11 +67,3 @@ Om je verder te verdiepen in AI en game-ontwikkeling, kun je het project uitbrei
 - **Moeilijkheidsniveaus**: Pas de snelheid en reactietijd van de AI aan op basis van de score of een vooraf bepaalde moeilijkheidsgraad.
 - **Voorspelling van balbaan**: Voeg meer complexiteit toe aan de AI door te berekenen waar de bal terecht zal komen in plaats van alleen de huidige positie van de bal te volgen.
 - **Multiplayer**: Implementeer een lokale multiplayer-modus waarbij twee spelers tegen elkaar kunnen spelen.
-
-## Conclusie
-
-Dit Pong AI-project is een uitstekende introductie in het maken van een AI voor games in Unity. Door de AI te verbeteren en het spel uit te breiden, kun je je vaardigheden in zowel Unity als game-AI verder ontwikkelen. Veel succes en veel plezier!
-
-## Auteur
-
-Dit project is ontwikkeld door Dennis van Wakeren. Het is bedoeld als leerproject voor studenten en beginners in game-ontwikkeling. Voel je vrij om bij te dragen en verbeteringen aan te brengen!
